@@ -8,10 +8,7 @@ import com.jewdokimow.hiltdemo.lotteries.models.DailyLottery
 import com.jewdokimow.hiltdemo.lotteries.models.UserData
 import com.jewdokimow.hiltdemo.lotteries.repositories.ILotteryRepository
 import com.jewdokimow.hiltdemo.lotteries.utilities.ILotteriesGeneratorUtil
-import dagger.hilt.android.testing.BindValue
-import dagger.hilt.android.testing.HiltAndroidRule
-import dagger.hilt.android.testing.HiltAndroidTest
-import dagger.hilt.android.testing.UninstallModules
+import dagger.hilt.android.testing.*
 import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -24,8 +21,6 @@ import javax.inject.Inject
 @RunWith(AndroidJUnit4::class)
 @UninstallModules(LotteryAppModule::class)
 class HiltSampleTest {
-
-
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
