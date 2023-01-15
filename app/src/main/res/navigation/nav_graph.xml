@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/DailyLotteryFragment">
+
+    <fragment
+        android:id="@+id/DailyLotteryFragment"
+        android:name="com.jewdokimow.hiltdemo.DailyLotteryFragment"
+        android:label="@string/daily_lotteries_label"
+        tools:layout="@layout/fragment_daily_lotteries">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/BirthdayLotteryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/BirthdayLotteryFragment"
+        android:name="com.jewdokimow.hiltdemo.BirthdayLotteryFragment"
+        android:label="@string/birthday_label"
+        tools:layout="@layout/fragment_birthday_lotteries">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/DailyLotteryFragment" />
+    </fragment>
+</navigation>
