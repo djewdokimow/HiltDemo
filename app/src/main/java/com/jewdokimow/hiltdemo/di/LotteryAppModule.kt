@@ -1,5 +1,6 @@
 package com.jewdokimow.hiltdemo.di
 
+import com.jewdokimow.hiltdemo.TimeEngine
 import com.jewdokimow.hiltdemo.lotteries.LotteriesAppData
 import com.jewdokimow.hiltdemo.lotteries.models.UserData
 import dagger.Module
@@ -22,5 +23,11 @@ class LotteryAppModule {
                 birthday = LocalDate.of(1993, 7, 27)
             )
         )
+    }
+
+    @Singleton
+    @Provides
+    fun getTimeEngine(): TimeEngine {
+        return TimeEngine()
     }
 }

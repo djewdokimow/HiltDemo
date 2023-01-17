@@ -1,5 +1,6 @@
 package com.jewdokimow.hiltdemo.di
 
+import com.jewdokimow.hiltdemo.TimeEngine
 import com.jewdokimow.hiltdemo.lotteries.LotteriesAppData
 import com.jewdokimow.hiltdemo.lotteries.models.LotteryResult
 import com.jewdokimow.hiltdemo.lotteries.models.Reward
@@ -72,8 +73,9 @@ class LotteryRepositoriesModule {
     fun provideDailyLotteriesRepository(
         data: LotteriesAppData,
         lotteryEngine: IDrawLotteryEngine<DailyLottery>,
-        validator: LotteriesValidator
+        validator: LotteriesValidator,
+        timeEngine: TimeEngine
     ): ILotteryRepository<DailyLottery> {
-        return DailyLotteriesRepository(data, lotteryEngine, validator)
+        return DailyLotteriesRepository(data, lotteryEngine, validator, timeEngine)
     }
 }
