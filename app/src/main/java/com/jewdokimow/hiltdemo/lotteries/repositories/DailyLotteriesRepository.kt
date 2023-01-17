@@ -22,7 +22,7 @@ class DailyLotteriesRepository(
     override fun getLotteriesVisibleForUser(): List<DailyLottery> {
         return appUserData.userLotteries.filter {
             it is DailyLottery && validator.shouldBoLotteryAvailableTodayForUser(
-                LocalDate.ofEpochDay(System.currentTimeMillis()), it
+                LocalDate.now(), it
             )
         } as List<DailyLottery>
     }

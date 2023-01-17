@@ -1,13 +1,12 @@
 package com.jewdokimow.hiltdemo
 
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.jewdokimow.hiltdemo.di.LotteriesGeneratorModule
 import com.jewdokimow.hiltdemo.di.LotteryAppModule
 import com.jewdokimow.hiltdemo.lotteries.LotteriesAppData
 import com.jewdokimow.hiltdemo.lotteries.models.DailyLottery
 import com.jewdokimow.hiltdemo.lotteries.models.UserData
 import com.jewdokimow.hiltdemo.lotteries.repositories.ILotteryRepository
-import com.jewdokimow.hiltdemo.lotteries.utilities.ILotteriesGeneratorUtil
 import dagger.hilt.android.testing.*
 import junit.framework.TestCase.assertEquals
 import org.junit.Before
@@ -22,10 +21,8 @@ import javax.inject.Inject
 @UninstallModules(LotteryAppModule::class)
 class HiltSampleTest {
 
-    @get:Rule
-    var hiltRule = HiltAndroidRule(this)
-
     @BindValue
+    @JvmField
     val appData: LotteriesAppData = LotteriesAppData(
         userLotteries = listOf(
             DailyLottery(
@@ -37,10 +34,14 @@ class HiltSampleTest {
         ),
         userData = UserData("tester", LocalDate.of(1995, 2, 21))
     )
-
-
     @Inject
     lateinit var dailyLottery: ILotteryRepository<DailyLottery>
+
+    @get:Rule(order = 0)
+    var hiltRule = HiltAndroidRule(this)
+
+    @get:Rule(order = 1)
+    var settingsActivityTestRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Before
     fun init() {
