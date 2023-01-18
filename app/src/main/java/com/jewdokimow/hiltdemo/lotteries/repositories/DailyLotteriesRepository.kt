@@ -36,7 +36,9 @@ class DailyLotteriesRepository(
         lottery: DailyLottery
     ): LotteryResult {
         return lotteryEngine.drawLottery(lottery).also {
-            appUserData.userLotteries -= lottery
+            if (it != LotteryResult.NewTicket) {
+                appUserData.userLotteries -= lottery
+            }
         }
     }
 }

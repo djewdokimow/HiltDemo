@@ -13,8 +13,9 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.kotlin.any
 import java.time.LocalDate
-
+import java.util.*
 
 @RunWith(MockitoJUnitRunner::class)
 class DailyLotteriesRepositoryTests {
@@ -62,6 +63,8 @@ class DailyLotteriesRepositoryTests {
             .thenReturn(
                 LocalDate.of(1993, 7, 27)
             )
+        `when`(drawLotteryEngine.drawLottery(any()))
+            .thenReturn(LotteryResult.Failure)
         repository = DailyLotteriesRepository(
             lotteriesAppData,
             drawLotteryEngine,
