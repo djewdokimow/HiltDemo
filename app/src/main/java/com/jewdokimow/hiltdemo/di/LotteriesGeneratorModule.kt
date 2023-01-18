@@ -1,5 +1,6 @@
 package com.jewdokimow.hiltdemo.di
 
+import com.jewdokimow.hiltdemo.TimeEngine
 import com.jewdokimow.hiltdemo.lotteries.LotteriesAppData
 import com.jewdokimow.hiltdemo.lotteries.utilities.ILotteriesGeneratorUtil
 import com.jewdokimow.hiltdemo.lotteries.utilities.LotteriesGeneratorUtil
@@ -22,7 +23,10 @@ class LotteriesGeneratorModule {
 
     @Singleton
     @Provides
-    fun provideLotteriesGeneratorUtil(data: LotteriesAppData): ILotteriesGeneratorUtil {
-        return LotteriesGeneratorUtil(data)
+    fun provideLotteriesGeneratorUtil(
+        data: LotteriesAppData,
+        timeEngine: TimeEngine
+    ): ILotteriesGeneratorUtil {
+        return LotteriesGeneratorUtil(data, timeEngine)
     }
 }
