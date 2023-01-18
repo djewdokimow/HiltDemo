@@ -4,10 +4,10 @@ import java.time.LocalDate
 
 
 abstract class BaseLottery(
-    val visibilityStartDate: LocalDate,
-    val visibilityEndDate: LocalDate,
-    val validityStartDate: LocalDate,
-    val validityEndDate: LocalDate
-){
-    abstract fun prepareLabel() : String
+    open val visibilityStartDate: LocalDate,
+    open val visibilityEndDate: LocalDate,
+    open val validityStartDate: LocalDate,
+    open val validityEndDate: LocalDate
+) {
+    abstract fun prepareLabel(): String
 }

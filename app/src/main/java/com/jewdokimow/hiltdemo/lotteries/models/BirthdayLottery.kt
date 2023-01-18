@@ -2,16 +2,16 @@ package com.jewdokimow.hiltdemo.lotteries.models
 
 import java.time.LocalDate
 
-class BirthdayLottery(
-    visibilityStartEndTs: LocalDate,
-    visibilityDateEndTs: LocalDate,
-    validityDateStartTs: LocalDate,
-    validityDateEndTs: LocalDate
+data class BirthdayLottery(
+    override val visibilityStartDate: LocalDate,
+    override val visibilityEndDate: LocalDate,
+    override val validityStartDate: LocalDate,
+    override val validityEndDate: LocalDate
 ) : BaseLottery(
-    visibilityStartEndTs,
-    visibilityDateEndTs,
-    validityDateStartTs,
-    validityDateEndTs
+    visibilityStartDate,
+    visibilityEndDate,
+    validityStartDate,
+    validityEndDate
 ) {
     override fun prepareLabel(): String {
         return "Los urodzinowy"

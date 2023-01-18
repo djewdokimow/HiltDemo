@@ -17,7 +17,7 @@ class LotteriesGeneratorUtil(private val data: LotteriesAppData) : ILotteriesGen
         val shouldGenerateBirthdayLottery = data.userData.birthday.let {
             it.dayOfMonth == nowDate.dayOfMonth && it.month == nowDate.month
         }
-        this.data.userLotteries = listOfNotNull(
+        val result = listOfNotNull(
             if (shouldGenerateBirthdayLottery) {
                 BirthdayLottery(
                     nowDate.minusDays(1),
@@ -31,6 +31,7 @@ class LotteriesGeneratorUtil(private val data: LotteriesAppData) : ILotteriesGen
             DailyLottery(nowDate.minusDays(1), nowDate.plusDays(1), nowDate, nowDate.plusDays(1)),
             DailyLottery(nowDate, nowDate.plusDays(2), nowDate.plusDays(1), nowDate.plusDays(2)),
         )
+        this.data.userLotteries.addAll(result)
     }
 
 }

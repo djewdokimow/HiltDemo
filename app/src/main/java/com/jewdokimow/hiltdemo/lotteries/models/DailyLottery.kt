@@ -2,11 +2,11 @@ package com.jewdokimow.hiltdemo.lotteries.models
 
 import java.time.LocalDate
 
-class DailyLottery(
-    visibilityStartDate: LocalDate,
-    visibilityEndDate: LocalDate,
-    validityStartDate: LocalDate,
-    validityEndDate: LocalDate
+data class DailyLottery(
+    override val visibilityStartDate: LocalDate,
+    override val visibilityEndDate: LocalDate,
+    override val validityStartDate: LocalDate,
+    override val validityEndDate: LocalDate
 ) : BaseLottery(
     visibilityStartDate,
     visibilityEndDate,
