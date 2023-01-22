@@ -60,42 +60,42 @@ class DailyLotteryFragment : Fragment() {
     }
 }
 
-
-class DailyLotteryNoDiModule {
-    private var lotteryRepository = DailyLotteriesRepository()
-}
-
-class DailyLotteryConstructorDiModule(private var lotteryRepository: DailyLotteriesRepository)
-
-class DailyLotteryFieldDiModule {
-    lateinit var lotteryRepository: DailyLotteriesRepository
-}
-
-class DailyLotterySetterMethodDiModule {
-    private lateinit var lotteryRepository: DailyLotteriesRepository
-
-    fun initWithLotteryRepository(lotteryRepository: DailyLotteriesRepository) {
-        this.lotteryRepository = lotteryRepository
-    }
-}
-
-class DailyLotteryMethodDiModule {
-    private lateinit var lotteryRepository: ILotteryRepository<DailyLottery>
-
-    fun initWithLotteryRepository(lotteryRepository: ILotteryRepository<DailyLottery>) {
-        this.lotteryRepository = lotteryRepository
-    }
-}
-
-class DailyLotterySelfDiModule {
-    lateinit var lotteryRepository: ILotteryRepository<DailyLottery>
-    init {
-        SelfDiFactory.inject(this)
-    }
-}
-
-object SelfDiFactory {
-    fun inject(lotteryModule: DailyLotterySelfDiModule){
-        lotteryModule.lotteryRepository = DailyLotteriesRepository()
-    }
-}
+//
+//class DailyLotteryNoDiModule {
+//    private var lotteryRepository = DailyLotteriesRepository()
+//}
+//
+//class DailyLotteryConstructorDiModule(private var lotteryRepository: DailyLotteriesRepository)
+//
+//class DailyLotteryFieldDiModule {
+//    lateinit var lotteryRepository: DailyLotteriesRepository
+//}
+//
+//class DailyLotterySetterMethodDiModule {
+//    private lateinit var lotteryRepository: DailyLotteriesRepository
+//
+//    fun initWithLotteryRepository(lotteryRepository: DailyLotteriesRepository) {
+//        this.lotteryRepository = lotteryRepository
+//    }
+//}
+//
+//class DailyLotteryMethodDiModule {
+//    private lateinit var lotteryRepository: ILotteryRepository<DailyLottery>
+//
+//    fun initWithLotteryRepository(lotteryRepository: ILotteryRepository<DailyLottery>) {
+//        this.lotteryRepository = lotteryRepository
+//    }
+//}
+//
+//class DailyLotterySelfDiModule {
+//    lateinit var lotteryRepository: ILotteryRepository<DailyLottery>
+//    init {
+//        SelfDiFactory.inject(this)
+//    }
+//}
+//
+//object SelfDiFactory {
+//    fun inject(lotteryModule: DailyLotterySelfDiModule){
+//        lotteryModule.lotteryRepository = DailyLotteriesRepository()
+//    }
+//}
